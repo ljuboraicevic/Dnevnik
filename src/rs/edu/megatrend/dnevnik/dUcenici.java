@@ -1,25 +1,13 @@
 package rs.edu.megatrend.dnevnik;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
 
 /**
  *
  * @author ljubo
  */
 public class dUcenici extends javax.swing.JDialog {
-
-    //ResultSet rs;
     
     public void ucitajUcenike() {            
             ResultSet rs = fLog.CB.izvrsiQuery("select * from ucenik");
@@ -72,6 +60,11 @@ public class dUcenici extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tUcenici);
 
         btnDodaj.setText("Dodaj ucenika");
+        btnDodaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajActionPerformed(evt);
+            }
+        });
 
         btnIzbrisi.setText("Izbrisi ucenika");
         btnIzbrisi.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +122,13 @@ public class dUcenici extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Niste izabrali ni jednog ucenika.");
         }
     }//GEN-LAST:event_btnIzbrisiActionPerformed
+
+    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
+        dUceniciDodavanje dud = new dUceniciDodavanje(null, true);
+        dud.setLocationRelativeTo(this);
+        dud.setVisible(true);
+        this.ucitajUcenike();
+    }//GEN-LAST:event_btnDodajActionPerformed
 
     /**
      * @param args the command line arguments
