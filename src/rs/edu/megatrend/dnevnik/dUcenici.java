@@ -21,7 +21,7 @@ public class dUcenici extends javax.swing.JDialog {
 
     //ResultSet rs;
     
-    public void ucitajUcenike() throws ClassNotFoundException, SQLException {            
+    public void ucitajUcenike() {            
             ResultSet rs = fLog.CB.izvrsiQuery("select * from ucenik");
             tUcenici.setModel(ConnectionBase.napraviROTableModel(rs));
     }
