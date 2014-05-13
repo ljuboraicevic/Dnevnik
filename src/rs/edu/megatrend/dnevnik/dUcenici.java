@@ -26,6 +26,11 @@ public class dUcenici extends javax.swing.JDialog {
             tUcenici.setModel(ConnectionBase.napraviROTableModel(rs));
     }
     
+    public void izbrisiUcenika(String id) {
+        fLog.CB.izvrsiQueryBezRezultata("DELETE FROM ucenik WHERE id_ucenik = '"+id+"'");
+        this.ucitajUcenike();
+    }
+    
     /**
      * Creates new form dUcenici
      */
@@ -45,6 +50,9 @@ public class dUcenici extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tUcenici = new javax.swing.JTable();
+        btnDodaj = new javax.swing.JButton();
+        btnIzbrisi = new javax.swing.JButton();
+        btnIzmeni = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ucenici");
@@ -63,25 +71,64 @@ public class dUcenici extends javax.swing.JDialog {
         tUcenici.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tUcenici);
 
+        btnDodaj.setText("Dodaj ucenika");
+
+        btnIzbrisi.setText("Izbrisi ucenika");
+        btnIzbrisi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIzbrisiActionPerformed(evt);
+            }
+        });
+
+        btnIzmeni.setText("Izmeni");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDodaj, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnIzbrisi, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnIzmeni, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnDodaj)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnIzbrisi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnIzmeni)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIzbrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzbrisiActionPerformed
+        //ukoliko je bar neki element tabele izabran
+        //i ako korisnik pritisne da kada mu iskoci dialog
+        Object[] options = {"Da","Ne"};
+        
+        if (tUcenici.getSelectedRow() != -1 && JOptionPane.showOptionDialog(this, "Brisanje ucenika?", "Brisanje ucenika", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]) == 0)
+        {
+            izbrisiUcenika(String.valueOf(tUcenici.getModel().getValueAt(tUcenici.getSelectedRow(),0)));
+        }
+        else 
+        {
+            JOptionPane.showMessageDialog(null, "Niste izabrali ni jednog ucenika.");
+        }
+    }//GEN-LAST:event_btnIzbrisiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,6 +173,9 @@ public class dUcenici extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnIzbrisi;
+    private javax.swing.JButton btnIzmeni;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tUcenici;
     // End of variables declaration//GEN-END:variables
