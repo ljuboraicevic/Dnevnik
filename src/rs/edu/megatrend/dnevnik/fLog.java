@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
  */
 public class fLog extends javax.swing.JFrame {
 
+    public static ConnectionBase CB;
+    
     //kada se unese pogresan user ili pass, treba da se isprazne polja i da se fokus
     //postavi na polje za username
     private void isprazniPolja()
@@ -31,6 +33,7 @@ public class fLog extends javax.swing.JFrame {
      */
     public fLog() {
         initComponents();
+        CB = new ConnectionBase();
     }
 
     /**
@@ -133,7 +136,7 @@ public class fLog extends javax.swing.JFrame {
 //                }
 //                else
 //                {
-        ResultSet rs = ConnectionBase.izvrsiQuery("SELECT * from ucenik");
+                    ResultSet rs = CB.izvrsiQuery("SELECT * from ucenik");
                     fMeni newfm = new fMeni();
                     newfm.setLocationRelativeTo(this);
                     newfm.setVisible(true);
@@ -203,7 +206,7 @@ public class fLog extends javax.swing.JFrame {
                 fLog newfLog = new fLog();
                 newfLog.setLocationRelativeTo(null);
                 //prikazivanje newfLoga
-                newfLog.setVisible(true);                        
+                newfLog.setVisible(true);
             }
         });
     }

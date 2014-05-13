@@ -34,85 +34,127 @@ public class ConnectionBase {
         return "jdbc:"+protocol+":"+filename;
     }
             
-    public static Connection conn; 
+    //public static Connection conn; 
     
     public ConnectionBase() {}
     
-    public static Connection getConnection() throws ClassNotFoundException, SQLException
-    {
-        Class.forName("org.sqlite.JDBC");
+//    public Connection getConnection() throws ClassNotFoundException, SQLException
+//    {
+//        Class.forName("org.sqlite.JDBC");
+//        try {
+//                return DriverManager.getConnection(getParams4Conn());
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ConnectionBase.class.getName()).log(Level.SEVERE, null, ex);
+//            JOptionPane.showMessageDialog(null, "<html>Izgubljena je konekcija sa serverom!<br>Program će se sada ugasiti. Postarajte se da je internet konekcija u redu, a zatim ponovo pokrenite program.</html>");
+//            System.exit(1);
+//        }
+//        return null;
+//    }
+
+    public ResultSet izvrsiQuery(String kveri) {
         try {
-                conn = DriverManager.getConnection(getParams4Conn());
-        } catch (SQLException ex) {
+            //ovaj deo sluzi za uspostavljanje konekcije
+            Class.forName("org.sqlite.JDBC");
+            Connection c = DriverManager.getConnection("jdbc:sqlite:ednevnik.sqlite");
+            
+            //ovde pravimo statement i izvrsavamo ga pomocu konekcije
+            Statement stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery(kveri);
+            //stmt.close();
+            //c.close();
+            return rs;
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ConnectionBase.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "<html>Izgubljena je konekcija sa serverom!<br>Program će se sada ugasiti. Postarajte se da je internet konekcija u redu, a zatim ponovo pokrenite program.</html>");
             System.exit(1);
-        }
-        return conn;
-    }
-
-    //izvrsiQuery prima query, a vraca resultset i dobija konekciju koristeci klasu ConnectionBase
-    public static ResultSet izvrsiQuery(String kveri)
-    {
-        //ako prosledjeni kveri nije prazan string
-        if (kveri.length() != 0)
-        {
-            //dobija konekciju od classe ConnectionBase (ona vraca uvek jednu konekciju, da se ne bi pravilo vise konekcija)
-            try
-            {
-                Connection konekcija = ConnectionBase.getConnection();
-                Statement st = konekcija.createStatement();
-                ResultSet rs = st.executeQuery(kveri);
-                return rs;
-            }
-            catch (ClassNotFoundException cnfe) {
-                 Logger.getLogger(fLog.class.getName()).log(Level.SEVERE, null, cnfe);
-                return null;
-            } catch (SQLException sqle) {
-                Logger.getLogger(fLog.class.getName()).log(Level.SEVERE, null, sqle);      
-                return null;
-            }
-            finally {
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ConnectionBase.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-        //ako jeste vrati null
-        else
-        {
             return null;
         }
     }
     
-    public static void izvrsiQueryBezRezultata(String kveri)
-    {
-        //ako prosledjeni kveri nije prazan string
-        //ako jeste, nista se nece desiti
-        if (kveri.length() != 0)
-        {
-            try
-            {
-                Connection konekcija = ConnectionBase.getConnection();
-                Statement st = konekcija.createStatement();
-                st.execute(kveri);
-            }
-            catch (ClassNotFoundException cnfe) {
-                 Logger.getLogger(fLog.class.getName()).log(Level.SEVERE, null, cnfe);      
-            } catch (SQLException sqle) {
-                Logger.getLogger(fLog.class.getName()).log(Level.SEVERE, null, sqle);      
-            }
-            finally {
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ConnectionBase.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+    public void izvrsiQueryBezRezultata(String kveri) {
+        try {
+            //ovaj deo sluzi za uspostavljanje konekcije
+            Class.forName("org.sqlite.JDBC");
+            Connection c = DriverManager.getConnection("jdbc:sqlite:ednevnik.sqlite");
+            
+            //ovde pravimo statement i izvrsavamo ga pomocu konekcije
+            Statement stmt = c.createStatement();
+            stmt.execute(kveri);
+            //stmt.close();
+            //c.close();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ConnectionBase.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "<html>Izgubljena je konekcija sa serverom!<br>Program će se sada ugasiti. Postarajte se da je internet konekcija u redu, a zatim ponovo pokrenite program.</html>");
+            System.exit(1);
         }
     }
+    
+//    //izvrsiQuery prima query, a vraca resultset i dobija konekciju koristeci klasu ConnectionBase
+//    public ResultSet izvrsiQuery(String kveri)
+//    {
+//        //ako prosledjeni kveri nije prazan string
+//        if (kveri.length() != 0)
+//        {
+//            Connection konekcija = null;
+//                    
+//            //dobija konekciju od classe ConnectionBase (ona vraca uvek jednu konekciju, da se ne bi pravilo vise konekcija)
+//            try
+//            {
+//                konekcija = this.getConnection();
+//                Statement st = konekcija.createStatement();
+//                ResultSet rs = st.executeQuery(kveri);
+//                return rs;
+//            }
+//            catch (ClassNotFoundException cnfe) {
+//                 Logger.getLogger(fLog.class.getName()).log(Level.SEVERE, null, cnfe);
+//                return null;
+//            } catch (SQLException sqle) {
+//                Logger.getLogger(fLog.class.getName()).log(Level.SEVERE, null, sqle);      
+//                return null;
+//            }
+//            finally {
+//                try {
+//                    konekcija.close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(ConnectionBase.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
+//        //ako jeste vrati null
+//        else
+//        {
+//            return null;
+//        }
+//    }
+    
+//    public void izvrsiQueryBezRezultata(String kveri)
+//    {
+//        //ako prosledjeni kveri nije prazan string
+//        //ako jeste, nista se nece desiti
+//        if (kveri.length() != 0)
+//        {
+//            Connection konekcija = null;
+//            
+//            try
+//            {
+//                konekcija = this.getConnection();
+//                Statement st = konekcija.createStatement();
+//                st.execute(kveri);
+//            }
+//            catch (ClassNotFoundException cnfe) {
+//                 Logger.getLogger(fLog.class.getName()).log(Level.SEVERE, null, cnfe);      
+//            } catch (SQLException sqle) {
+//                Logger.getLogger(fLog.class.getName()).log(Level.SEVERE, null, sqle);      
+//            }
+//            finally {
+//                try {
+//                    konekcija.close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(ConnectionBase.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
+//    }
     
     public static DefaultTableModel napraviROTableModel(ResultSet rs)
     {
