@@ -1,0 +1,652 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00632736, pid=2037, tid=2248862528
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_05-b13) (build 1.8.0_05-b13)
+# Java VM: Java HotSpot(TM) Server VM (25.5-b02 mixed mode linux-x86 )
+# Problematic frame:
+# C  [sqlite-3.7.2-libsqlitejdbc.so+0xc736]  sqlite3_data_count+0x33
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x864b3000):  JavaThread "AWT-EventQueue-0" [_thread_in_native, id=2055, stack(0x8605e000,0x860af000)]
+
+siginfo:si_signo=SIGSEGV: si_errno=0, si_code=1 (SEGV_MAPERR), si_addr=0x00000000
+
+Registers:
+EAX=0x00000000, EBX=0x00695fc4, ECX=0x006516e9, EDX=0x00000000
+ESP=0x860aca74, EBP=0x860aca98, ESI=0x85a071f4, EDI=0x00000000
+EIP=0x00632736, EFLAGS=0x00210286, CR2=0x00000000
+
+Top of Stack: (sp=0x860aca74)
+0x860aca74:   a8513934 a8502a48 00000000 860acb54
+0x860aca84:   00000000 0063272a 00695fc4 85a071f4
+0x860aca94:   864b3000 860acac8 0062e295 00000000
+0x860acaa4:   00000000 85a514d8 864b3000 00000000
+0x860acab4:   860acb54 0062e281 85a071f8 85a071f4
+0x860acac4:   864b3000 860acb14 a850bc49 864b312c
+0x860acad4:   860acb30 00000000 00000000 00000000
+0x860acae4:   864b3000 860acaec 00000001 9d95a5e8 
+
+Instructions: (pc=0x00632736)
+0x00632716:   30 eb 02 31 c0 5d c3 55 89 e5 57 89 d7 56 53 e8
+0x00632726:   ed a2 ff ff 81 c3 9a 38 06 00 83 ec 18 89 45 ec
+0x00632736:   8b 00 ff 75 ec 89 4d e8 89 45 f0 e8 ee 9d ff ff
+0x00632746:   83 c4 10 39 c7 89 c6 7d 04 85 ff 79 04 31 f6 eb 
+
+Register to memory mapping:
+
+EAX=0x00000000 is an unknown value
+EBX=0x00695fc4: <offset 0x6ffc4> in /tmp/sqlite-3.7.2-libsqlitejdbc.so at 0x00626000
+ECX=0x006516e9: sqlite3_value_text16+0 in /tmp/sqlite-3.7.2-libsqlitejdbc.so at 0x00626000
+EDX=0x00000000 is an unknown value
+ESP=0x860aca74 is pointing into the stack for thread: 0x864b3000
+EBP=0x860aca98 is pointing into the stack for thread: 0x864b3000
+ESI=0x85a071f4 is an unknown value
+EDI=0x00000000 is an unknown value
+
+
+Stack: [0x8605e000,0x860af000],  sp=0x860aca74,  free space=314k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [sqlite-3.7.2-libsqlitejdbc.so+0xc736]  sqlite3_data_count+0x33
+C  [sqlite-3.7.2-libsqlitejdbc.so+0x8295]  Java_org_sqlite_NativeDB_column_1name+0x1f
+j  org.sqlite.NativeDB.column_name(JI)Ljava/lang/String;+0
+j  org.sqlite.RS.getColumnName(I)Ljava/lang/String;+16
+j  org.sqlite.RS.getColumnLabel(I)Ljava/lang/String;+2
+j  rs.edu.megatrend.dnevnik.ConnectionBase.napraviROTableModel(Ljava/sql/ResultSet;)Ljavax/swing/table/DefaultTableModel;+47
+j  rs.edu.megatrend.dnevnik.dUcenici.ucitajUcenike()V+14
+j  rs.edu.megatrend.dnevnik.fMeni.btnUceniciActionPerformed(Ljava/awt/event/ActionEvent;)V+16
+j  rs.edu.megatrend.dnevnik.fMeni.access$000(Lrs/edu/megatrend/dnevnik/fMeni;Ljava/awt/event/ActionEvent;)V+2
+j  rs.edu.megatrend.dnevnik.fMeni$1.actionPerformed(Ljava/awt/event/ActionEvent;)V+5
+j  javax.swing.AbstractButton.fireActionPerformed(Ljava/awt/event/ActionEvent;)V+83
+j  javax.swing.AbstractButton$Handler.actionPerformed(Ljava/awt/event/ActionEvent;)V+5
+j  javax.swing.DefaultButtonModel.fireActionPerformed(Ljava/awt/event/ActionEvent;)V+34
+j  javax.swing.DefaultButtonModel.setPressed(Z)V+117
+j  javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Ljava/awt/event/MouseEvent;)V+35
+j  java.awt.Component.processMouseEvent(Ljava/awt/event/MouseEvent;)V+64
+j  javax.swing.JComponent.processMouseEvent(Ljava/awt/event/MouseEvent;)V+23
+j  java.awt.Component.processEvent(Ljava/awt/AWTEvent;)V+81
+j  java.awt.Container.processEvent(Ljava/awt/AWTEvent;)V+18
+j  java.awt.Component.dispatchEventImpl(Ljava/awt/AWTEvent;)V+589
+j  java.awt.Container.dispatchEventImpl(Ljava/awt/AWTEvent;)V+42
+j  java.awt.Component.dispatchEvent(Ljava/awt/AWTEvent;)V+2
+j  java.awt.LightweightDispatcher.retargetMouseEvent(Ljava/awt/Component;ILjava/awt/event/MouseEvent;)V+327
+j  java.awt.LightweightDispatcher.processMouseEvent(Ljava/awt/event/MouseEvent;)Z+143
+j  java.awt.LightweightDispatcher.dispatchEvent(Ljava/awt/AWTEvent;)Z+50
+j  java.awt.Container.dispatchEventImpl(Ljava/awt/AWTEvent;)V+12
+j  java.awt.Window.dispatchEventImpl(Ljava/awt/AWTEvent;)V+19
+j  java.awt.Component.dispatchEvent(Ljava/awt/AWTEvent;)V+2
+j  java.awt.EventQueue.dispatchEventImpl(Ljava/awt/AWTEvent;Ljava/lang/Object;)V+41
+j  java.awt.EventQueue.access$400(Ljava/awt/EventQueue;Ljava/awt/AWTEvent;Ljava/lang/Object;)V+3
+j  java.awt.EventQueue$3.run()Ljava/lang/Void;+32
+j  java.awt.EventQueue$3.run()Ljava/lang/Object;+1
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x4afdff]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x101f
+V  [libjvm.so+0x6ed549]  os::os_exception_wrapper(void (*)(JavaValue*, methodHandle*, JavaCallArguments*, Thread*), JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x19
+V  [libjvm.so+0x4ae3cf]  JavaCalls::call(JavaValue*, methodHandle, JavaCallArguments*, Thread*)+0x2f
+V  [libjvm.so+0x5306df]  JVM_DoPrivileged+0x29f
+C  [libjava.so+0x9c2a]  Java_java_security_AccessController_doPrivileged__Ljava_security_PrivilegedAction_2Ljava_security_AccessControlContext_2+0x3a
+j  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedAction;Ljava/security/AccessControlContext;)Ljava/lang/Object;+0
+j  java.security.ProtectionDomain$1.doIntersectionPrivilege(Ljava/security/PrivilegedAction;Ljava/security/AccessControlContext;Ljava/security/AccessControlContext;)Ljava/lang/Object;+28
+j  java.security.ProtectionDomain$1.doIntersectionPrivilege(Ljava/security/PrivilegedAction;Ljava/security/AccessControlContext;)Ljava/lang/Object;+6
+j  java.awt.EventQueue$4.run()Ljava/lang/Void;+11
+j  java.awt.EventQueue$4.run()Ljava/lang/Object;+1
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x4afdff]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x101f
+V  [libjvm.so+0x6ed549]  os::os_exception_wrapper(void (*)(JavaValue*, methodHandle*, JavaCallArguments*, Thread*), JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x19
+V  [libjvm.so+0x4ae3cf]  JavaCalls::call(JavaValue*, methodHandle, JavaCallArguments*, Thread*)+0x2f
+V  [libjvm.so+0x5306df]  JVM_DoPrivileged+0x29f
+C  [libjava.so+0x9c2a]  Java_java_security_AccessController_doPrivileged__Ljava_security_PrivilegedAction_2Ljava_security_AccessControlContext_2+0x3a
+j  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedAction;Ljava/security/AccessControlContext;)Ljava/lang/Object;+0
+j  java.security.ProtectionDomain$1.doIntersectionPrivilege(Ljava/security/PrivilegedAction;Ljava/security/AccessControlContext;Ljava/security/AccessControlContext;)Ljava/lang/Object;+28
+j  java.awt.EventQueue.dispatchEvent(Ljava/awt/AWTEvent;)V+73
+j  java.awt.EventDispatchThread.pumpOneEventForFilters(I)V+245
+j  java.awt.EventDispatchThread.pumpEventsForFilter(ILjava/awt/Conditional;Ljava/awt/EventFilter;)V+35
+j  java.awt.EventDispatchThread.pumpEventsForHierarchy(ILjava/awt/Conditional;Ljava/awt/Component;)V+11
+j  java.awt.EventDispatchThread.pumpEvents(ILjava/awt/Conditional;)V+4
+j  java.awt.EventDispatchThread.pumpEvents(Ljava/awt/Conditional;)V+3
+j  java.awt.EventDispatchThread.run()V+9
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x4afdff]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x101f
+V  [libjvm.so+0x6ed549]  os::os_exception_wrapper(void (*)(JavaValue*, methodHandle*, JavaCallArguments*, Thread*), JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x19
+V  [libjvm.so+0x4b0222]  JavaCalls::call_virtual(JavaValue*, KlassHandle, Symbol*, Symbol*, JavaCallArguments*, Thread*)+0x262
+V  [libjvm.so+0x4b065b]  JavaCalls::call_virtual(JavaValue*, Handle, KlassHandle, Symbol*, Symbol*, Thread*)+0x4b
+V  [libjvm.so+0x53d22d]  thread_entry(JavaThread*, Thread*)+0x8d
+V  [libjvm.so+0x81b6b9]  JavaThread::thread_main_inner()+0x109
+V  [libjvm.so+0x81b8ae]  JavaThread::run()+0x1be
+V  [libjvm.so+0x6f43b9]  java_start(Thread*)+0x119
+C  [libpthread.so.0+0x6d4c]  start_thread+0xcc
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  org.sqlite.NativeDB.column_name(JI)Ljava/lang/String;+0
+j  org.sqlite.RS.getColumnName(I)Ljava/lang/String;+16
+j  org.sqlite.RS.getColumnLabel(I)Ljava/lang/String;+2
+j  rs.edu.megatrend.dnevnik.ConnectionBase.napraviROTableModel(Ljava/sql/ResultSet;)Ljavax/swing/table/DefaultTableModel;+47
+j  rs.edu.megatrend.dnevnik.dUcenici.ucitajUcenike()V+14
+j  rs.edu.megatrend.dnevnik.fMeni.btnUceniciActionPerformed(Ljava/awt/event/ActionEvent;)V+16
+j  rs.edu.megatrend.dnevnik.fMeni.access$000(Lrs/edu/megatrend/dnevnik/fMeni;Ljava/awt/event/ActionEvent;)V+2
+j  rs.edu.megatrend.dnevnik.fMeni$1.actionPerformed(Ljava/awt/event/ActionEvent;)V+5
+j  javax.swing.AbstractButton.fireActionPerformed(Ljava/awt/event/ActionEvent;)V+83
+j  javax.swing.AbstractButton$Handler.actionPerformed(Ljava/awt/event/ActionEvent;)V+5
+j  javax.swing.DefaultButtonModel.fireActionPerformed(Ljava/awt/event/ActionEvent;)V+34
+j  javax.swing.DefaultButtonModel.setPressed(Z)V+117
+j  javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Ljava/awt/event/MouseEvent;)V+35
+j  java.awt.Component.processMouseEvent(Ljava/awt/event/MouseEvent;)V+64
+j  javax.swing.JComponent.processMouseEvent(Ljava/awt/event/MouseEvent;)V+23
+j  java.awt.Component.processEvent(Ljava/awt/AWTEvent;)V+81
+j  java.awt.Container.processEvent(Ljava/awt/AWTEvent;)V+18
+j  java.awt.Component.dispatchEventImpl(Ljava/awt/AWTEvent;)V+589
+j  java.awt.Container.dispatchEventImpl(Ljava/awt/AWTEvent;)V+42
+j  java.awt.Component.dispatchEvent(Ljava/awt/AWTEvent;)V+2
+j  java.awt.LightweightDispatcher.retargetMouseEvent(Ljava/awt/Component;ILjava/awt/event/MouseEvent;)V+327
+j  java.awt.LightweightDispatcher.processMouseEvent(Ljava/awt/event/MouseEvent;)Z+143
+j  java.awt.LightweightDispatcher.dispatchEvent(Ljava/awt/AWTEvent;)Z+50
+j  java.awt.Container.dispatchEventImpl(Ljava/awt/AWTEvent;)V+12
+j  java.awt.Window.dispatchEventImpl(Ljava/awt/AWTEvent;)V+19
+j  java.awt.Component.dispatchEvent(Ljava/awt/AWTEvent;)V+2
+j  java.awt.EventQueue.dispatchEventImpl(Ljava/awt/AWTEvent;Ljava/lang/Object;)V+41
+j  java.awt.EventQueue.access$400(Ljava/awt/EventQueue;Ljava/awt/AWTEvent;Ljava/lang/Object;)V+3
+j  java.awt.EventQueue$3.run()Ljava/lang/Void;+32
+j  java.awt.EventQueue$3.run()Ljava/lang/Object;+1
+v  ~StubRoutines::call_stub
+j  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedAction;Ljava/security/AccessControlContext;)Ljava/lang/Object;+0
+j  java.security.ProtectionDomain$1.doIntersectionPrivilege(Ljava/security/PrivilegedAction;Ljava/security/AccessControlContext;Ljava/security/AccessControlContext;)Ljava/lang/Object;+28
+j  java.security.ProtectionDomain$1.doIntersectionPrivilege(Ljava/security/PrivilegedAction;Ljava/security/AccessControlContext;)Ljava/lang/Object;+6
+j  java.awt.EventQueue$4.run()Ljava/lang/Void;+11
+j  java.awt.EventQueue$4.run()Ljava/lang/Object;+1
+v  ~StubRoutines::call_stub
+j  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedAction;Ljava/security/AccessControlContext;)Ljava/lang/Object;+0
+j  java.security.ProtectionDomain$1.doIntersectionPrivilege(Ljava/security/PrivilegedAction;Ljava/security/AccessControlContext;Ljava/security/AccessControlContext;)Ljava/lang/Object;+28
+j  java.awt.EventQueue.dispatchEvent(Ljava/awt/AWTEvent;)V+73
+j  java.awt.EventDispatchThread.pumpOneEventForFilters(I)V+245
+j  java.awt.EventDispatchThread.pumpEventsForFilter(ILjava/awt/Conditional;Ljava/awt/EventFilter;)V+35
+j  java.awt.EventDispatchThread.pumpEventsForHierarchy(ILjava/awt/Conditional;Ljava/awt/Component;)V+11
+j  java.awt.EventDispatchThread.pumpEvents(ILjava/awt/Conditional;)V+4
+j  java.awt.EventDispatchThread.pumpEvents(Ljava/awt/Conditional;)V+3
+j  java.awt.EventDispatchThread.run()V+9
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x85eb5000 JavaThread "TimerQueue" daemon [_thread_blocked, id=2057, stack(0x85caf000,0x85d00000)]
+  0x864e9400 JavaThread "Image Fetcher 0" daemon [_thread_blocked, id=2056, stack(0x85f0d000,0x85f5e000)]
+  0xb7507400 JavaThread "DestroyJavaVM" [_thread_blocked, id=2040, stack(0xb76c8000,0xb7719000)]
+=>0x864b3000 JavaThread "AWT-EventQueue-0" [_thread_in_native, id=2055, stack(0x8605e000,0x860af000)]
+  0x864b2000 JavaThread "AWT-Shutdown" [_thread_blocked, id=2054, stack(0x860af000,0x86100000)]
+  0x86462800 JavaThread "AWT-XAWT" daemon [_thread_in_native, id=2053, stack(0x86509000,0x8655a000)]
+  0x8644fc00 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=2052, stack(0x86b2c000,0x86b7d000)]
+  0x86a3ac00 JavaThread "Service Thread" daemon [_thread_blocked, id=2050, stack(0x8852e000,0x8857f000)]
+  0x86a37c00 JavaThread "C1 CompilerThread1" daemon [_thread_blocked, id=2049, stack(0x865db000,0x8665c000)]
+  0x86a35c00 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=2048, stack(0x8665c000,0x866dd000)]
+  0x86a34400 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=2047, stack(0x8872e000,0x8877f000)]
+  0x86a16400 JavaThread "Finalizer" daemon [_thread_blocked, id=2046, stack(0x868dd000,0x8692e000)]
+  0x86a13c00 JavaThread "Reference Handler" daemon [_thread_blocked, id=2045, stack(0x8692e000,0x8697f000)]
+
+Other Threads:
+  0x86a10c00 VMThread [stack: 0x8697f000,0x86a00000] [id=2044]
+  0x86a3c800 WatcherThread [stack: 0x8655a000,0x865db000] [id=2051]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ PSYoungGen      total 9472K, used 2707K [0x9d800000, 0x9e280000, 0xa8000000)
+  eden space 8192K, 17% used [0x9d800000,0x9d966c30,0x9e000000)
+  from space 1280K, 99% used [0x9e000000,0x9e13e240,0x9e140000)
+  to   space 1280K, 0% used [0x9e140000,0x9e140000,0x9e280000)
+ ParOldGen       total 22016K, used 1931K [0x88800000, 0x89d80000, 0x9d800000)
+  object space 22016K, 8% used [0x88800000,0x889e2f08,0x89d80000)
+ Metaspace       used 9174K, capacity 9265K, committed 9368K, reserved 9520K
+
+Card table byte_map: [0xa8043000,0xa8140000] byte_map_base: 0xa7bff000
+
+Marking Bits: (ParMarkBitMap*) 0x01891d80
+ Begin Bits: [0x87440000, 0x87c20000)
+ End Bits:   [0x87c20000, 0x88400000)
+
+Polling page: 0xb772c000
+
+CodeCache: size=245760Kb used=2184Kb max_used=2184Kb free=243575Kb
+ bounds [0xa8500000, 0xa8740000, 0xb7500000]
+ total_blobs=1062 nmethods=776 adapters=202
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 3.659 Thread 0x86a37c00 nmethod 765 0xa871d288 code [0xa871d3c0, 0xa871d6a4]
+Event: 3.659 Thread 0x86a37c00  767       3       javax.swing.JButton::getUIClassID (3 bytes)
+Event: 3.659 Thread 0x86a37c00 nmethod 767 0xa871d808 code [0xa871d900, 0xa871d9c0]
+Event: 3.659 Thread 0x86a37c00  766       3       java.awt.font.FontRenderContext::equals (127 bytes)
+Event: 3.664 Thread 0x86a37c00 nmethod 766 0xa871da48 code [0xa871dcc0, 0xa871ea10]
+Event: 3.664 Thread 0x86a37c00  772       3       java.util.HashMap::putVal (300 bytes)
+Event: 3.667 Thread 0x86a37c00 nmethod 772 0xa871ef08 code [0xa871f120, 0xa871ff58]
+Event: 3.667 Thread 0x86a37c00  771       3       javax.swing.GroupLayout$Spring::getMaximumSize (27 bytes)
+Event: 3.668 Thread 0x86a37c00 nmethod 771 0xa8720608 code [0xa8720740, 0xa872098c]
+Event: 3.668 Thread 0x86a37c00  768       3       javax.swing.GroupLayout::getComponentInfo (62 bytes)
+
+GC Heap History (2 events):
+Event: 2.527 GC heap before
+{Heap before GC invocations=1 (full 0):
+ PSYoungGen      total 9472K, used 7988K [0x9d800000, 0x9e280000, 0xa8000000)
+  eden space 8192K, 97% used [0x9d800000,0x9dfcd088,0x9e000000)
+  from space 1280K, 0% used [0x9e140000,0x9e140000,0x9e280000)
+  to   space 1280K, 0% used [0x9e000000,0x9e000000,0x9e140000)
+ ParOldGen       total 22016K, used 0K [0x88800000, 0x89d80000, 0x9d800000)
+  object space 22016K, 0% used [0x88800000,0x88800000,0x89d80000)
+ Metaspace       used 8711K, capacity 8780K, committed 8856K, reserved 9520K
+Event: 2.545 GC heap after
+Heap after GC invocations=1 (full 0):
+ PSYoungGen      total 9472K, used 1272K [0x9d800000, 0x9e280000, 0xa8000000)
+  eden space 8192K, 0% used [0x9d800000,0x9d800000,0x9e000000)
+  from space 1280K, 99% used [0x9e000000,0x9e13e240,0x9e140000)
+  to   space 1280K, 0% used [0x9e140000,0x9e140000,0x9e280000)
+ ParOldGen       total 22016K, used 1931K [0x88800000, 0x89d80000, 0x9d800000)
+  object space 22016K, 8% used [0x88800000,0x889e2f08,0x89d80000)
+ Metaspace       used 8711K, capacity 8780K, committed 8856K, reserved 9520K
+}
+
+Deoptimization events (4 events):
+Event: 2.386 Thread 0x864b3000 Uncommon trap: reason=unloaded action=reinterpret pc=0xa86b8a2c method=org.sqlite.SQLiteJDBCLoader.md5sum(Ljava/io/InputStream;)Ljava/lang/String; @ 35
+Event: 2.387 Thread 0x864b3000 Uncommon trap: reason=unreached action=reinterpret pc=0xa86bb70c method=sun.security.provider.DigestBase.engineUpdate(B)V @ 4
+Event: 3.649 Thread 0x864b3000 Uncommon trap: reason=unreached action=reinterpret pc=0xa87020fc method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 109
+Event: 3.649 Thread 0x864b3000 Uncommon trap: reason=unreached action=reinterpret pc=0xa8659df0 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 109
+
+Internal exceptions (10 events):
+Event: 2.460 Thread 0x864b3000 Exception <a 'java/security/PrivilegedActionException'> (0x9df804d8) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u5/2488/hotspot/src/share/vm/prims/jvm.cpp, line 1248]
+Event: 2.464 Thread 0x864b3000 Exception <a 'java/security/PrivilegedActionException'> (0x9df8b020) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u5/2488/hotspot/src/share/vm/prims/jvm.cpp, line 1248]
+Event: 2.470 Thread 0x864b3000 Exception <a 'java/security/PrivilegedActionException'> (0x9df97220) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u5/2488/hotspot/src/share/vm/prims/jvm.cpp, line 1248]
+Event: 2.474 Thread 0x864b3000 Exception <a 'java/security/PrivilegedActionException'> (0x9dfa0190) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u5/2488/hotspot/src/share/vm/prims/jvm.cpp, line 1248]
+Event: 2.475 Thread 0x864b3000 Exception <a 'java/security/PrivilegedActionException'> (0x9dfa21a0) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u5/2488/hotspot/src/share/vm/prims/jvm.cpp, line 1248]
+Event: 2.582 Thread 0x864b3000 Exception <a 'java/lang/UnsupportedOperationException': > (0x9d8a1ae8) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u5/2488/hotspot/src/share/vm/prims/jni.cpp, line 742]
+Event: 3.557 Thread 0x864b3000 Exception <a 'java/security/PrivilegedActionException'> (0x9d8fecf0) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u5/2488/hotspot/src/share/vm/prims/jvm.cpp, line 1248]
+Event: 3.634 Thread 0x864b3000 Exception <a 'java/security/PrivilegedActionException'> (0x9d943cc0) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u5/2488/hotspot/src/share/vm/prims/jvm.cpp, line 1248]
+Event: 3.635 Thread 0x864b3000 Exception <a 'java/security/PrivilegedActionException'> (0x9d945d90) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u5/2488/hotspot/src/share/vm/prims/jvm.cpp, line 1248]
+Event: 3.636 Thread 0x864b3000 Exception <a 'java/security/PrivilegedActionException'> (0x9d947e48) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u5/2488/hotspot/src/share/vm/prims/jvm.cpp, line 1248]
+
+Events (10 events):
+Event: 3.659 loading class java/util/Vector$1
+Event: 3.659 loading class java/util/Vector$1 done
+Event: 3.663 loading class javax/swing/JTable$2
+Event: 3.663 loading class javax/swing/JTable$Resizable3
+Event: 3.663 loading class javax/swing/JTable$Resizable2
+Event: 3.663 loading class javax/swing/JTable$Resizable2 done
+Event: 3.663 loading class javax/swing/JTable$Resizable3 done
+Event: 3.663 loading class javax/swing/JTable$2 done
+Event: 3.664 loading class javax/swing/JTable$5
+Event: 3.664 loading class javax/swing/JTable$5 done
+
+
+Dynamic libraries:
+00110000-002b4000 r-xp 00000000 08:01 2889888    /lib/i386-linux-gnu/libc-2.15.so
+002b4000-002b6000 r--p 001a4000 08:01 2889888    /lib/i386-linux-gnu/libc-2.15.so
+002b6000-002b7000 rw-p 001a6000 08:01 2889888    /lib/i386-linux-gnu/libc-2.15.so
+002b7000-002ba000 rw-p 00000000 00:00 0 
+002ba000-002c1000 r-xp 00000000 08:01 2889337    /lib/i386-linux-gnu/librt-2.15.so
+002c1000-002c2000 r--p 00006000 08:01 2889337    /lib/i386-linux-gnu/librt-2.15.so
+002c2000-002c3000 rw-p 00007000 08:01 2889337    /lib/i386-linux-gnu/librt-2.15.so
+002c3000-002ce000 r-xp 00000000 08:01 2889881    /lib/i386-linux-gnu/libnss_files-2.15.so
+002ce000-002cf000 r--p 0000a000 08:01 2889881    /lib/i386-linux-gnu/libnss_files-2.15.so
+002cf000-002d0000 rw-p 0000b000 08:01 2889881    /lib/i386-linux-gnu/libnss_files-2.15.so
+002d0000-002e9000 r-xp 00000000 08:05 2623638    /home/nikola/jdk1.8.0_05/jre/lib/i386/libzip.so
+002e9000-002ea000 rw-p 00018000 08:05 2623638    /home/nikola/jdk1.8.0_05/jre/lib/i386/libzip.so
+002ea000-00333000 r-xp 00000000 08:05 2623546    /home/nikola/jdk1.8.0_05/jre/lib/i386/libawt_xawt.so
+00333000-00335000 rw-p 00049000 08:05 2623546    /home/nikola/jdk1.8.0_05/jre/lib/i386/libawt_xawt.so
+00335000-00336000 rw-p 00000000 00:00 0 
+00336000-0033b000 r-xp 00000000 08:01 1968655    /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0
+0033b000-0033c000 r--p 00004000 08:01 1968655    /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0
+0033c000-0033d000 rw-p 00005000 08:01 1968655    /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0
+0033e000-00354000 r-xp 00000000 08:01 2888391    /lib/i386-linux-gnu/libnsl-2.15.so
+00354000-00355000 r--p 00015000 08:01 2888391    /lib/i386-linux-gnu/libnsl-2.15.so
+00355000-00356000 rw-p 00016000 08:01 2888391    /lib/i386-linux-gnu/libnsl-2.15.so
+00356000-00358000 rw-p 00000000 00:00 0 
+00358000-00360000 r-xp 00000000 08:01 1969177    /usr/lib/i386-linux-gnu/libXrender.so.1.3.0
+00360000-00361000 r--p 00007000 08:01 1969177    /usr/lib/i386-linux-gnu/libXrender.so.1.3.0
+00361000-00362000 rw-p 00008000 08:01 1969177    /usr/lib/i386-linux-gnu/libXrender.so.1.3.0
+00362000-00366000 r-xp 00000000 08:01 1966914    /usr/lib/i386-linux-gnu/libXfixes.so.3.1.0
+00366000-00367000 r--p 00004000 08:01 1966914    /usr/lib/i386-linux-gnu/libXfixes.so.3.1.0
+00367000-00368000 rw-p 00005000 08:01 1966914    /usr/lib/i386-linux-gnu/libXfixes.so.3.1.0
+0036d000-00378000 r-xp 00000000 08:05 2623580    /home/nikola/jdk1.8.0_05/jre/lib/i386/libverify.so
+00378000-00379000 rw-p 0000b000 08:05 2623580    /home/nikola/jdk1.8.0_05/jre/lib/i386/libverify.so
+00379000-004a9000 r-xp 00000000 08:01 1969181    /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+004a9000-004aa000 r--p 0012f000 08:01 1969181    /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+004aa000-004ac000 rw-p 00130000 08:01 1969181    /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+004ac000-004ad000 rw-p 00000000 00:00 0 
+004ad000-004bc000 r-xp 00000000 08:01 1968656    /usr/lib/i386-linux-gnu/libXi.so.6.1.0
+004bc000-004bd000 r--p 0000e000 08:01 1968656    /usr/lib/i386-linux-gnu/libXi.so.6.1.0
+004bd000-004be000 rw-p 0000f000 08:01 1968656    /usr/lib/i386-linux-gnu/libXi.so.6.1.0
+004be000-004dd000 r-xp 00000000 08:01 1969041    /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+004dd000-004de000 r--p 0001f000 08:01 1969041    /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+004de000-004df000 rw-p 00020000 08:01 1969041    /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+004df000-004ee000 r-xp 00000000 08:05 2623639    /home/nikola/jdk1.8.0_05/jre/lib/i386/libnio.so
+004ee000-004ef000 rw-p 0000e000 08:05 2623639    /home/nikola/jdk1.8.0_05/jre/lib/i386/libnio.so
+00501000-00502000 r-xp 00000000 00:00 0          [vdso]
+00502000-00563000 r-xp 00000000 08:05 2623487    /home/nikola/jdk1.8.0_05/jre/lib/i386/libfontmanager.so
+00563000-00566000 rw-p 00060000 08:05 2623487    /home/nikola/jdk1.8.0_05/jre/lib/i386/libfontmanager.so
+00566000-0056a000 rw-p 00000000 00:00 0 
+0057b000-00592000 r-xp 00000000 08:01 2888922    /lib/i386-linux-gnu/libpthread-2.15.so
+00592000-00593000 r--p 00016000 08:01 2888922    /lib/i386-linux-gnu/libpthread-2.15.so
+00593000-00594000 rw-p 00017000 08:01 2888922    /lib/i386-linux-gnu/libpthread-2.15.so
+00594000-00596000 rw-p 00000000 00:00 0 
+00596000-005f6000 r-xp 00000000 08:05 2623641    /home/nikola/jdk1.8.0_05/jre/lib/i386/libt2k.so
+005f6000-005fa000 rw-p 00060000 08:05 2623641    /home/nikola/jdk1.8.0_05/jre/lib/i386/libt2k.so
+005fa000-005fe000 rw-p 00000000 00:00 0 
+005fe000-00623000 r-xp 00000000 08:05 2623619    /home/nikola/jdk1.8.0_05/jre/lib/i386/libdcpr.so
+00623000-00626000 rw-p 00024000 08:05 2623619    /home/nikola/jdk1.8.0_05/jre/lib/i386/libdcpr.so
+00626000-00695000 r-xp 00000000 08:01 2644891    /tmp/sqlite-3.7.2-libsqlitejdbc.so
+00695000-00697000 rw-p 0006e000 08:01 2644891    /tmp/sqlite-3.7.2-libsqlitejdbc.so
+00697000-00698000 rw-p 00000000 00:00 0 
+00789000-00799000 r-xp 00000000 08:01 1966855    /usr/lib/i386-linux-gnu/libXext.so.6.4.0
+00799000-0079a000 r--p 0000f000 08:01 1966855    /usr/lib/i386-linux-gnu/libXext.so.6.4.0
+0079a000-0079b000 rw-p 00010000 08:01 1966855    /usr/lib/i386-linux-gnu/libXext.so.6.4.0
+007cf000-007d8000 r-xp 00000000 08:01 1967691    /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2
+007d8000-007d9000 r--p 00008000 08:01 1967691    /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2
+007d9000-007da000 rw-p 00009000 08:01 1967691    /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2
+0082a000-00831000 r-xp 00000000 08:01 2889886    /lib/i386-linux-gnu/libnss_compat-2.15.so
+00831000-00832000 r--p 00006000 08:01 2889886    /lib/i386-linux-gnu/libnss_compat-2.15.so
+00832000-00833000 rw-p 00007000 08:01 2889886    /lib/i386-linux-gnu/libnss_compat-2.15.so
+008ca000-008cd000 r-xp 00000000 08:01 2889887    /lib/i386-linux-gnu/libdl-2.15.so
+008cd000-008ce000 r--p 00002000 08:01 2889887    /lib/i386-linux-gnu/libdl-2.15.so
+008ce000-008cf000 rw-p 00003000 08:01 2889887    /lib/i386-linux-gnu/libdl-2.15.so
+00941000-0094b000 r-xp 00000000 08:01 2889874    /lib/i386-linux-gnu/libnss_nis-2.15.so
+0094b000-0094c000 r--p 00009000 08:01 2889874    /lib/i386-linux-gnu/libnss_nis-2.15.so
+0094c000-0094d000 rw-p 0000a000 08:01 2889874    /lib/i386-linux-gnu/libnss_nis-2.15.so
+009bb000-00a41000 r-xp 00000000 08:05 2623642    /home/nikola/jdk1.8.0_05/jre/lib/i386/libawt.so
+00a41000-00a48000 rw-p 00086000 08:05 2623642    /home/nikola/jdk1.8.0_05/jre/lib/i386/libawt.so
+00a48000-00a6c000 rw-p 00000000 00:00 0 
+00b63000-00b77000 r-xp 00000000 08:05 2623640    /home/nikola/jdk1.8.0_05/jre/lib/i386/libnet.so
+00b77000-00b78000 rw-p 00014000 08:05 2623640    /home/nikola/jdk1.8.0_05/jre/lib/i386/libnet.so
+00c80000-00c82000 r-xp 00000000 08:01 1968644    /usr/lib/i386-linux-gnu/libXau.so.6.0.0
+00c82000-00c83000 r--p 00001000 08:01 1968644    /usr/lib/i386-linux-gnu/libXau.so.6.0.0
+00c83000-00c84000 rw-p 00002000 08:01 1968644    /usr/lib/i386-linux-gnu/libXau.so.6.0.0
+00c92000-00cad000 r-xp 00000000 08:01 2884508    /lib/i386-linux-gnu/libgcc_s.so.1
+00cad000-00cae000 r--p 0001a000 08:01 2884508    /lib/i386-linux-gnu/libgcc_s.so.1
+00cae000-00caf000 rw-p 0001b000 08:01 2884508    /lib/i386-linux-gnu/libgcc_s.so.1
+00d3b000-00d5f000 r-xp 00000000 08:05 2623621    /home/nikola/jdk1.8.0_05/jre/lib/i386/libjava.so
+00d5f000-00d60000 rw-p 00023000 08:05 2623621    /home/nikola/jdk1.8.0_05/jre/lib/i386/libjava.so
+00da6000-00dd0000 r-xp 00000000 08:01 2889734    /lib/i386-linux-gnu/libm-2.15.so
+00dd0000-00dd1000 r--p 00029000 08:01 2889734    /lib/i386-linux-gnu/libm-2.15.so
+00dd1000-00dd2000 rw-p 0002a000 08:01 2889734    /lib/i386-linux-gnu/libm-2.15.so
+00df8000-00dfd000 r-xp 00000000 08:01 1968680    /usr/lib/i386-linux-gnu/libXtst.so.6.1.0
+00dfd000-00dfe000 r--p 00004000 08:01 1968680    /usr/lib/i386-linux-gnu/libXtst.so.6.1.0
+00dfe000-00dff000 rw-p 00005000 08:01 1968680    /usr/lib/i386-linux-gnu/libXtst.so.6.1.0
+00e40000-00e54000 r-xp 00000000 08:05 2623565    /home/nikola/jdk1.8.0_05/jre/lib/i386/jli/libjli.so
+00e54000-00e55000 rw-p 00013000 08:05 2623565    /home/nikola/jdk1.8.0_05/jre/lib/i386/jli/libjli.so
+00ef0000-00f10000 r-xp 00000000 08:01 2889081    /lib/i386-linux-gnu/ld-2.15.so
+00f10000-00f11000 r--p 0001f000 08:01 2889081    /lib/i386-linux-gnu/ld-2.15.so
+00f11000-00f12000 rw-p 00020000 08:01 2889081    /lib/i386-linux-gnu/ld-2.15.so
+00f12000-0181a000 r-xp 00000000 08:05 2623497    /home/nikola/jdk1.8.0_05/jre/lib/i386/server/libjvm.so
+0181a000-01882000 rw-p 00908000 08:05 2623497    /home/nikola/jdk1.8.0_05/jre/lib/i386/server/libjvm.so
+01882000-01ca5000 rw-p 00000000 00:00 0 
+08048000-08049000 r-xp 00000000 08:05 2623792    /home/nikola/jdk1.8.0_05/jre/bin/java
+08049000-0804a000 rw-p 00000000 08:05 2623792    /home/nikola/jdk1.8.0_05/jre/bin/java
+09cb6000-09f50000 rw-p 00000000 00:00 0          [heap]
+85651000-85888000 rw-p 00000000 00:00 0 
+85888000-85900000 rw-s 00000000 00:04 1081351    /SYSV00000000 (deleted)
+85900000-85990000 rw-p 00000000 00:00 0 
+85990000-85a00000 ---p 00000000 00:00 0 
+85a00000-85ae0000 rw-p 00000000 00:00 0 
+85ae0000-85b00000 ---p 00000000 00:00 0 
+85b00000-85b5a000 rw-p 00000000 00:00 0 
+85b5a000-85c00000 ---p 00000000 00:00 0 
+85caf000-85cb2000 ---p 00000000 00:00 0 
+85cb2000-85e00000 rw-p 00000000 00:00 0 
+85e00000-85eee000 rw-p 00000000 00:00 0 
+85eee000-85f00000 ---p 00000000 00:00 0 
+85f0d000-85f10000 ---p 00000000 00:00 0 
+85f10000-8605e000 rw-p 00000000 00:00 0 
+8605e000-86061000 ---p 00000000 00:00 0 
+86061000-860af000 rw-p 00000000 00:00 0 
+860af000-860b2000 ---p 00000000 00:00 0 
+860b2000-86200000 rw-p 00000000 00:00 0 
+86200000-862fd000 rw-p 00000000 00:00 0 
+862fd000-86300000 ---p 00000000 00:00 0 
+86300000-86400000 rw-p 00000000 00:00 0 
+86400000-864f9000 rw-p 00000000 00:00 0 
+864f9000-86500000 ---p 00000000 00:00 0 
+86509000-8650c000 ---p 00000000 00:00 0 
+8650c000-8655a000 rw-p 00000000 00:00 0 
+8655a000-8655b000 ---p 00000000 00:00 0 
+8655b000-865db000 rw-p 00000000 00:00 0 
+865db000-865de000 ---p 00000000 00:00 0 
+865de000-8665c000 rw-p 00000000 00:00 0 
+8665c000-8665f000 ---p 00000000 00:00 0 
+8665f000-866dd000 rw-p 00000000 00:00 0 
+866dd000-868dd000 r--p 00000000 08:01 1970326    /usr/lib/locale/locale-archive
+868dd000-868e0000 ---p 00000000 00:00 0 
+868e0000-8692e000 rw-p 00000000 00:00 0 
+8692e000-86931000 ---p 00000000 00:00 0 
+86931000-8697f000 rw-p 00000000 00:00 0 
+8697f000-86980000 ---p 00000000 00:00 0 
+86980000-86a00000 rw-p 00000000 00:00 0 
+86a00000-86afa000 rw-p 00000000 00:00 0 
+86afa000-86b00000 ---p 00000000 00:00 0 
+86b2c000-86b2f000 ---p 00000000 00:00 0 
+86b2f000-86bcc000 rw-p 00000000 00:00 0 
+86bcc000-86da1000 r--s 03c4d000 08:05 2623769    /home/nikola/jdk1.8.0_05/jre/lib/rt.jar
+86da1000-87242000 rw-p 00000000 00:00 0 
+87242000-87248000 ---p 00000000 00:00 0 
+87248000-88400000 rw-p 00000000 00:00 0 
+88400000-88500000 rw-p 00000000 00:00 0 
+8852e000-88531000 ---p 00000000 00:00 0 
+88531000-8857f000 rw-p 00000000 00:00 0 
+8857f000-88580000 ---p 00000000 00:00 0 
+88580000-88600000 rw-p 00000000 00:00 0 
+88600000-88621000 rw-p 00000000 00:00 0 
+88621000-88700000 ---p 00000000 00:00 0 
+88715000-8871a000 r--s 00092000 08:05 2623741    /home/nikola/jdk1.8.0_05/jre/lib/jsse.jar
+8872e000-88731000 ---p 00000000 00:00 0 
+88731000-8877f000 rw-p 00000000 00:00 0 
+8877f000-88780000 ---p 00000000 00:00 0 
+88780000-89d80000 rw-p 00000000 00:00 0 
+89d80000-9d800000 ---p 00000000 00:00 0 
+9d800000-9e280000 rw-p 00000000 00:00 0 
+9e280000-a8000000 ---p 00000000 00:00 0 
+a8002000-a800d000 r--s 0021a000 08:05 2623566    /home/nikola/jdk1.8.0_05/jre/lib/ext/localedata.jar
+a800d000-a8029000 r--s 00393000 08:05 2623600    /home/nikola/jdk1.8.0_05/jre/lib/ext/cldrdata.jar
+a8029000-a802a000 r--s 00000000 08:01 2758480    /var/cache/fontconfig/c05880de57d1f5e948fdfacc138775d9-le32d4.cache-3
+a802a000-a8030000 r--s 00000000 08:01 2758482    /var/cache/fontconfig/945677eb7aeaf62f1d50efc3fb3ec7d8-le32d4.cache-3
+a8030000-a8032000 r--s 00000000 08:01 2758479    /var/cache/fontconfig/99e8ed0e538f840c565b6ed5dad60d56-le32d4.cache-3
+a8032000-a8035000 r--s 00000000 08:01 2758478    /var/cache/fontconfig/2cd17615ca594fa2959ae173292e504c-le32d4.cache-3
+a8035000-a803c000 r--s 00000000 08:01 2759477    /var/cache/fontconfig/6d41288fd70b0be22e8c3a91e032eec0-le32d4.cache-3
+a803c000-a803f000 r--s 00000000 08:01 2758476    /var/cache/fontconfig/8801497958630a81b71ace7c5f9b32a8-le32d4.cache-3
+a803f000-a8043000 r--s 00000000 08:01 2758475    /var/cache/fontconfig/3047814df9a2f067bd2d96a2b9c36e5a-le32d4.cache-3
+a8043000-a804e000 rw-p 00000000 00:00 0 
+a804e000-a80eb000 ---p 00000000 00:00 0 
+a80eb000-a80f1000 rw-p 00000000 00:00 0 
+a80f1000-a813f000 ---p 00000000 00:00 0 
+a813f000-a8149000 rw-p 00000000 00:00 0 
+a8149000-a8500000 ---p 00000000 00:00 0 
+a8500000-a8740000 rwxp 00000000 00:00 0 
+a8740000-b7500000 ---p 00000000 00:00 0 
+b7500000-b75f6000 rw-p 00000000 00:00 0 
+b75f6000-b7600000 ---p 00000000 00:00 0 
+b7601000-b7603000 rw-p 00000000 00:00 0 
+b7603000-b7605000 r--s 00000000 08:01 2759475    /var/cache/fontconfig/e49e89034d371f0f9de17aab02136486-le32d4.cache-3
+b7605000-b7606000 r--s 00000000 08:01 2758473    /var/cache/fontconfig/4b14b093aebc79c320de5e86ae1d3314-le32d4.cache-3
+b7606000-b7613000 r--s 00000000 08:01 2758474    /var/cache/fontconfig/d52a8644073d54c13679302ca1180695-le32d4.cache-3
+b7613000-b7614000 r--s 00000000 08:01 2758486    /var/cache/fontconfig/e13b20fdb08344e0e664864cc2ede53d-le32d4.cache-3
+b7614000-b762b000 rw-p 00000000 00:00 0 
+b762b000-b76c8000 ---p 00000000 00:00 0 
+b76c8000-b76cb000 ---p 00000000 00:00 0 
+b76cb000-b771c000 rw-p 00000000 00:00 0 
+b771c000-b771d000 r--s 00000000 08:01 2759476    /var/cache/fontconfig/4794a0821666d79190d59a36cb4f44b5-le32d4.cache-3
+b771d000-b7722000 r--s 00309000 08:05 1968458    /home/nikola/NetBeansProjects/Dnevnik/lib/sqlite-jdbc-3.7.2.jar
+b7722000-b7723000 r--p 01714000 08:01 1970326    /usr/lib/locale/locale-archive
+b7723000-b772b000 rw-s 00000000 08:01 2621527    /tmp/hsperfdata_nikola/2037
+b772b000-b772c000 rw-p 00000000 00:00 0 
+b772c000-b772d000 r--p 00000000 00:00 0 
+b772d000-b772f000 rw-p 00000000 00:00 0 
+bf937000-bf938000 rwxp 00000000 00:00 0 
+bf96a000-bf98b000 rw-p 00000000 00:00 0          [stack]
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 
+java_command: rs.edu.megatrend.dnevnik.fLog
+java_class_path (initial): /home/nikola/NetBeansProjects/Dnevnik/lib/sqlite-jdbc-3.7.2.jar:/home/nikola/NetBeansProjects/Dnevnik/build/classes
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/usr/local/java/jre1.7.0_45
+PATH=/usr/lib/libfm:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/path/to/tools:/path/to/platform-tools:/path/to/tools:/path/to/platform-tools:/home/nikola/bin:/usr/local/java/jre1.7.0_45/bin
+LD_LIBRARY_PATH=/home/nikola/jdk1.8.0_05/jre/lib/amd64:/home/nikola/jdk1.8.0_05/jre/lib/i386:
+SHELL=/bin/bash
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x863250], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x863250], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x6ef420], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x6ef420], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGXFSZ: [libjvm.so+0x6ef420], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x6ef420], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x6f0b30], sa_mask[0]=0x00000004, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x6f1f40], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: SIG_IGN, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGTERM: [libjvm.so+0x6f1f40], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x6f1f40], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=12.04
+DISTRIB_CODENAME=precise
+DISTRIB_DESCRIPTION="Ubuntu 12.04.4 LTS"
+
+uname:Linux 3.2.0-61-generic #93-Ubuntu SMP Fri May 2 21:33:33 UTC 2014 i686
+libc:glibc 2.15 NPTL 2.15 
+rlimit: STACK 8192k, CORE 0k, NPROC 15984, NOFILE 4096, AS infinity
+load average:0.56 0.29 0.20
+
+/proc/meminfo:
+MemTotal:        2060580 kB
+MemFree:         1066472 kB
+Buffers:           62680 kB
+Cached:           421112 kB
+SwapCached:            0 kB
+Active:           579208 kB
+Inactive:         366204 kB
+Active(anon):     462260 kB
+Inactive(anon):     6924 kB
+Active(file):     116948 kB
+Inactive(file):   359280 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+HighTotal:       1186696 kB
+HighFree:         292656 kB
+LowTotal:         873884 kB
+LowFree:          773816 kB
+SwapTotal:       1952764 kB
+SwapFree:        1952764 kB
+Dirty:               256 kB
+Writeback:             0 kB
+AnonPages:        461740 kB
+Mapped:            67008 kB
+Shmem:              7572 kB
+Slab:              23352 kB
+SReclaimable:      13860 kB
+SUnreclaim:         9492 kB
+KernelStack:        2240 kB
+PageTables:         3564 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     2983052 kB
+Committed_AS:    1206916 kB
+VmallocTotal:     122880 kB
+VmallocUsed:       50920 kB
+VmallocChunk:      70720 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       4096 kB
+DirectMap4k:       12280 kB
+DirectMap4M:      897024 kB
+
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 15 stepping 13, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, tsc
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 15
+model name	: Intel(R) Pentium(R) Dual  CPU  E2180  @ 2.00GHz
+stepping	: 13
+microcode	: 0xa1
+cpu MHz		: 1200.000
+cache size	: 1024 KB
+physical id	: 0
+siblings	: 2
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 10
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx lm constant_tsc arch_perfmon pebs bts aperfmperf pni dtes64 monitor ds_cpl est tm2 ssse3 cx16 xtpr pdcm lahf_lm dtherm
+bogomips	: 3999.72
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 15
+model name	: Intel(R) Pentium(R) Dual  CPU  E2180  @ 2.00GHz
+stepping	: 13
+microcode	: 0xa1
+cpu MHz		: 1200.000
+cache size	: 1024 KB
+physical id	: 0
+siblings	: 2
+core id		: 1
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 10
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx lm constant_tsc arch_perfmon pebs bts aperfmperf pni dtes64 monitor ds_cpl est tm2 ssse3 cx16 xtpr pdcm lahf_lm dtherm
+bogomips	: 3999.97
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 2060580k(1066472k free), swap 1952764k(1952764k free)
+
+vm_info: Java HotSpot(TM) Server VM (25.5-b02) for linux-x86 JRE (1.8.0_05-b13), built on Mar 18 2014 00:45:30 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Wed May 14 16:05:45 2014
+elapsed time: 3 seconds
+
