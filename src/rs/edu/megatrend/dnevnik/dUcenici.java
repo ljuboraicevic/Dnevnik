@@ -74,6 +74,11 @@ public class dUcenici extends javax.swing.JDialog {
         });
 
         btnIzmeni.setText("Izmeni");
+        btnIzmeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIzmeniActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,8 +90,9 @@ public class dUcenici extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnDodaj, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnIzbrisi, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnIzmeni, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnIzmeni, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnIzbrisi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -129,6 +135,22 @@ public class dUcenici extends javax.swing.JDialog {
         dud.setVisible(true);
         this.ucitajUcenike();
     }//GEN-LAST:event_btnDodajActionPerformed
+
+    private void btnIzmeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzmeniActionPerformed
+        //ukoliko je bar neki element tabele izabran
+        if (tUcenici.getSelectedRow() != -1)
+        {
+            String idUcenika = String.valueOf(tUcenici.getModel().getValueAt(tUcenici.getSelectedRow(),0));
+            dUceniciIzmena dui = new dUceniciIzmena(null, true, idUcenika);
+            dui.setLocationRelativeTo(this);
+            dui.setVisible(true);
+            this.ucitajUcenike();
+        }
+        else 
+        {
+            JOptionPane.showMessageDialog(null, "Niste izabrali ni jednog ucenika.");
+        }
+    }//GEN-LAST:event_btnIzmeniActionPerformed
 
     /**
      * @param args the command line arguments
