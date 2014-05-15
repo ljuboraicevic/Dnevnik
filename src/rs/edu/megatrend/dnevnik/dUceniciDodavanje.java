@@ -1,30 +1,38 @@
 package rs.edu.megatrend.dnevnik;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author ljubo
  */
 public class dUceniciDodavanje extends javax.swing.JDialog {
 
-    private void dodajUcenika(
-            String sIme, 
-            String sPrezime, 
-            String sPol, 
-            String sDatumRodjenja, 
-            String sMestoRodjenja, 
-            String sAdresa, 
-            String sTelefon, 
-            String sEmail, 
-            String sUsername, 
-            String sPassword, 
+    private ResultSet dodajUcenika(
+            String sIme,
+            String sPrezime,
+            String sPol,
+            String sDatumRodjenja,
+            String sMestoRodjenja,
+            String sAdresa,
+            String sTelefon,
+            String sEmail,
+            String sUsername,
+            String sPassword,
             String sNapomena) {
-            fLog.CB.izvrsiQueryBezRezultata(
-                "INSERT INTO ucenik VALUES ($next_id,'"+sIme+"','"+sPrezime+"','"
-                +sPol+"', '"+sDatumRodjenja+"', '"+sMestoRodjenja+"', '"
-                +sAdresa+"', '"+sTelefon+"', '"+sEmail+"', '', '', '"+sUsername
-                +"', '"+sPassword+"', '"+sNapomena+"') ");
+        fLog.CB.izvrsiQueryBezRezultata(
+                "INSERT INTO ucenik VALUES ($next_id,'" + sIme + "','" + sPrezime + "','"
+                + sPol + "', '" + sDatumRodjenja + "', '" + sMestoRodjenja + "', '"
+                + sAdresa + "', '" + sTelefon + "', '" + sEmail + "', '', '', '" + sUsername
+                + "', '" + sPassword + "', '" + sNapomena + "') ");
+        
+        return fLog.CB.izvrsiQuery("SELECT last_insert_rowid() FROM ucenik");
+       
     }
-    
+
     /**
      * Creates new form dUceniciDodavanje
      */
@@ -126,35 +134,37 @@ public class dUceniciDodavanje extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfNapomena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfAdresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfMestoRodjenja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfPol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfDatumRodjenja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDodajUcenika)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfNapomena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfAdresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfMestoRodjenja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfPol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfDatumRodjenja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 29, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnDodajUcenika)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -214,11 +224,18 @@ public class dUceniciDodavanje extends javax.swing.JDialog {
 
     private void btnDodajUcenikaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajUcenikaActionPerformed
         //pokrece metodu za dodavanje ucenika
-        this.dodajUcenika(tfIme.getText(), tfPrezime.getText(), tfPol.getText(), 
-                tfDatumRodjenja.getText(), tfMestoRodjenja.getText(), 
-                tfAdresa.getText(), tfTelefon.getText(), tfEmail.getText(), 
+        ResultSet rs = this.dodajUcenika(tfIme.getText(), tfPrezime.getText(), tfPol.getText(),
+                tfDatumRodjenja.getText(), tfMestoRodjenja.getText(),
+                tfAdresa.getText(), tfTelefon.getText(), tfEmail.getText(),
                 tfUsername.getText(), tfPassword.getText(), tfNapomena.getText());
-        
+         
+        try {
+             String id_ucenika = rs.getString(1);
+             dStarateljiDodavanje dsd = new dStarateljiDodavanje(new javax.swing.JFrame(), true, id_ucenika);
+        } catch (SQLException ex) {
+            Logger.getLogger(dUceniciDodavanje.class.getName()).log(Level.SEVERE, null, ex);
+        }            
+
         //gasi se ovaj this dijalog (na dispose se poziva listener windowClosed)
         this.dispose();
     }//GEN-LAST:event_btnDodajUcenikaActionPerformed
