@@ -45,9 +45,12 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnProfesori" max="32767" attributes="0"/>
-                      <Component id="btnUcenici" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnProfesori" max="32767" attributes="0"/>
+                          <Component id="btnUcenici" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="btnPredmeti" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="186" max="32767" attributes="0"/>
               </Group>
@@ -60,7 +63,9 @@
                   <Component id="btnUcenici" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnProfesori" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="280" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnPredmeti" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="249" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -80,6 +85,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProfesoriActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnPredmeti">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Podaci o predmetima"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPredmetiActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

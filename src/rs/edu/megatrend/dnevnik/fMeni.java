@@ -27,6 +27,7 @@ public class fMeni extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnUcenici = new javax.swing.JButton();
         btnProfesori = new javax.swing.JButton();
+        btnPredmeti = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Podešavanja");
@@ -47,15 +48,24 @@ public class fMeni extends javax.swing.JFrame {
             }
         });
 
+        btnPredmeti.setText("Podaci o predmetima");
+        btnPredmeti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPredmetiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnProfesori, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnUcenici, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnProfesori, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUcenici, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnPredmeti))
                 .addContainerGap(186, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -65,7 +75,9 @@ public class fMeni extends javax.swing.JFrame {
                 .addComponent(btnUcenici)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnProfesori)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPredmeti)
+                .addContainerGap(249, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -96,6 +108,14 @@ public class fMeni extends javax.swing.JFrame {
         newdp.ucitajProfesore();
         newdp.setVisible(true);
     }//GEN-LAST:event_btnProfesoriActionPerformed
+
+    private void btnPredmetiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPredmetiActionPerformed
+        // TODO add your handling code here:
+        dPredmeti newdpr = new dPredmeti(this, true);
+        newdpr.setLocationRelativeTo(this);
+        newdpr.ucitajPredmete();
+        newdpr.setVisible(true);
+    }//GEN-LAST:event_btnPredmetiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,6 +159,7 @@ public class fMeni extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPredmeti;
     private javax.swing.JButton btnProfesori;
     private javax.swing.JButton btnUcenici;
     private javax.swing.JPanel jPanel1;
